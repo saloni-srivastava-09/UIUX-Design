@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Responsive Email Template</title>
+  <style>
+    /* Global resets for browser preview. Real email uses inline CSS as well. */
+    body { margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color:#f4f4f5; }
+    img { border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+    table { border-collapse:collapse !important; }/* Container sizing for responsive preview */
+.email-wrapper { width:100%; background-color:#f4f4f5; padding:20px 0; }
+.email-container { width:600px; margin:0 auto; }
+
+/* Mobile responsiveness (for browser preview) */
+@media only screen and (max-width:620px) {
+  .email-container { width:100% !important; }
+  .stack-column, .stack-column-center { display:block !important; width:100% !important; max-width:100% !important; }
+  .pad { padding:16px !important; }
+  .center-on-mobile { text-align:center !important; }
+}
+
+/* Small helper classes used inline as well */
+.button { display:inline-block; text-decoration:none; padding:12px 20px; border-radius:6px; }
+
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f5; font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;">  <!-- Browser-only controls (not included when sending email) -->  <div style="max-width:720px; margin:12px auto; font-size:13px; color:#6b7280; text-align:center;">
+    <em>Preview tools: </em>
+    <button id="toggleDark" style="margin-left:8px; padding:6px 10px;">Toggle Dark Preview</button>
+    <button id="copyHtml" style="margin-left:8px; padding:6px 10px;">Copy Email HTML</button>
+    <span id="copyStatus" style="margin-left:12px;color:green"></span>
+  </div>  <!-- EMAIL START -->  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="email-wrapper" style="background-color:#f4f4f5;">
+    <tr>
+      <td align="center"><!-- Main container (600px) -->
+    <table role="presentation" cellpadding="0" cellspacing="0" class="email-container" style="width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden;">
+
+      <!-- Header -->
+      <tr>
+        <td style="padding:24px 24px 12px; text-align:center; background-image:linear-gradient(180deg,#0ea5a4, #06b6d4); color:#ffffff;">
+          <img src="https://via.placeholder.com/120x40?text=Logo" alt="Company logo" width="120" style="display:block; margin:0 auto 12px;">
+          <h1 style="margin:0; font-size:20px; line-height:1.2; font-weight:600;">Product Update &amp; News</h1>
+        </td>
+      </tr>
+
+      <!-- Hero / Intro -->
+      <tr>
+        <td style="padding:20px 24px 12px;">
+          <p style="margin:0 0 12px; color:#374151; font-size:15px;">Hi <strong><!-- EDITABLE: user name -->Subscriber</strong>,</p>
+          <p style="margin:0; color:#374151; font-size:15px;">We’re excited to share the latest features and improvements we've rolled out this month. Here’s a quick summary.</p>
+        </td>
+      </tr>
+
+      <!-- Two column features (table-based for email clients) -->
+      <tr>
+        <td style="padding:12px 24px 20px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="stack-column" style="width:50%; vertical-align:top; padding-right:8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f8fafc; border-radius:8px; padding:12px;">
+                  <tr>
+                    <td style="padding-bottom:8px;"><strong style="font-size:15px;">New Dashboard</strong></td>
+                  </tr>
+                  <tr>
+                    <td style="color:#6b7280; font-size:14px;">A redesigned analytics dashboard to help you track metrics faster.</td>
+                  </tr>
+                </table>
+              </td>
+              <td class="stack-column" style="width:50%; vertical-align:top; padding-left:8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f8fafc; border-radius:8px; padding:12px;">
+                  <tr>
+                    <td style="padding-bottom:8px;"><strong style="font-size:15px;">Faster Load Times</strong></td>
+                  </tr>
+                  <tr>
+                    <td style="color:#6b7280; font-size:14px;">We optimized the backend and reduced average page load times by up to 40%.</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- CTA -->
+      <tr>
+        <td style="padding:6px 24px 24px; text-align:center;">
+          <a href="https://example.com" class="button" style="background-color:#06b6d4; color:#ffffff; font-weight:600; text-decoration:none; border-radius:8px; padding:12px 24px; display:inline-block;">Explore the Update</a>
+        </td>
+      </tr>
+
+      <!-- Featured image with text -->
+      <tr>
+        <td style="padding:0 24px 18px;">
+          <img src="https://via.placeholder.com/552x200" alt="Feature image" width="552" style="display:block; width:100%; max-width:552px; border-radius:8px;">
+        </td>
+      </tr>
+
+      <!-- Footer / legal -->
+      <tr>
+        <td style="padding:18px 24px 28px; font-size:13px; color:#6b7280;">
+          <p style="margin:0 0 8px;">If you don't want these emails, you can <a href="#" style="color:#06b6d4;">unsubscribe</a>.</p>
+          <p style="margin:0;">Company Inc., 123 Example Street, City, Country</p>
+        </td>
+      </tr>
+
+    </table>
+    <!-- END main container -->
+
+  </td>
+</tr>
+
+  </table>
+  <!-- EMAIL END -->  <script>
+    /* Browser-only helpers. JavaScript does NOT run in most email clients. */
+    (function(){
+      const toggle = document.getElementById('toggleDark');
+      const copyBtn = document.getElementById('copyHtml');
+      const copyStatus = document.getElementById('copyStatus');
+      let dark = false;
+
+      toggle.addEventListener('click', ()=>{
+        dark = !dark;
+        document.body.style.backgroundColor = dark ? '#0b1220' : '#f4f4f5';
+        // toggle container background for preview
+        const containers = document.querySelectorAll('.email-container');
+        containers.forEach(c=> c.style.backgroundColor = dark ? '#0f1724' : '#ffffff');
+        // adjust text colors inside header
+        const headers = document.querySelectorAll('h1');
+        headers.forEach(h=> h.style.color = dark ? '#9ae6b4' : '');
+      });
+
+      copyBtn.addEventListener('click', async ()=>{
+        // Copy the inner HTML of the main table (email-friendly markup). This is for convenience only.
+        const emailTable = document.querySelector('.email-container').outerHTML;
+        try{
+          await navigator.clipboard.writeText(emailTable);
+          copyStatus.textContent = 'Copied!';
+          setTimeout(()=> copyStatus.textContent = '', 2000);
+        }catch(e){
+          copyStatus.textContent = 'Copy failed';
+          setTimeout(()=> copyStatus.textContent = '', 2000);
+        }
+      });
+    })();
+  </script></body>
+</html>
